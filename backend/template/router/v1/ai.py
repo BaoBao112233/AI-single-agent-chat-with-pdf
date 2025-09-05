@@ -1,5 +1,5 @@
 import os
-from fastapi import APIRouter, UploadFile, File
+from fastapi import APIRouter, UploadFile, File, Form
 from cachetools import TTLCache
 from template.agent.agent import Agent
 from template.configs.environments import env
@@ -65,16 +65,16 @@ async def chat(request: ChatRequestAPI):
 
 @Router_upload_file.post("/pdf")    
 async def upload_pdf(
-    session_id: int,
-    user_id: int,
-    file: UploadFile = File(...)):
+    file: UploadFile = File(...),
+    session_id: int = Form(...),
+    user_id: int = Form(...)):
     """Upload a PDF file for processing"""
     try:
         if file.content_type != "application/pdf":
             return APIResponse(
                 response="",
-            error_status="Invalid file type. Please upload a PDF file."
-        )
+                error_status="Invalid file type. Please upload a PDF file."
+            )
 
         if file.filename == "":
             return APIResponse(

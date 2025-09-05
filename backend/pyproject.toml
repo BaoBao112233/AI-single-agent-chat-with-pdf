@@ -6,6 +6,7 @@ authors = ["Your Name <youremail@example.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
+python = "^3.12"
 fastapi = "^0.112.0"
 uvicorn = "^0.29.0"
 pydantic-settings = "^2.7.1"
@@ -28,6 +29,7 @@ python-multipart = "^0.0.7"
 PyMuPDF = "^1.24.4"
 pdfplumber = "^0.10.3"
 pypdf = "^4.2.0"
+requests = "^2.31.0"
 
 
 [build-system]
